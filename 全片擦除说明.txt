@@ -1,0 +1,49 @@
+==============================================
+ MSPM0G3507 天猛星 全片擦除（解锁）完整步骤
+==============================================
+
+【一、准备材料】
+ 1. MSPM0G3507 天猛星开发板
+ 2. J-Link 调试器（山寨 ARM-OB 也可以，支持 SWD 即可）
+ 3. 4根杜邦线
+
+【二、装 J-Link 软件】
+ 1. 解压 JLink_V810e 文件夹（绿色版，无需安装）
+ 2. 进入 USBDriver 目录，双击 InstDrivers.exe 安装 USB 驱动
+ 3. J-Link 用 USB 线接电脑
+
+【三、接线（J-Link → 天猛星）】
+    J-Link 3V3   →  板子 3V3
+    J-Link GND   →  板子 GND
+    J-Link SWDIO →  板子 PA19
+    J-Link SWCLK →  板子 PA20
+
+【四、执行全擦】
+ 方式A（推荐，一键）：
+   双击「一键全擦.bat」，按提示回车即可
+
+ 方式B（手动，J-Link Commander）：
+   打开命令行，运行 JLink.exe，逐行输入：
+     device MSPM0G3507
+     si SWD
+     speed 4000
+     connect
+     h
+     erase          ← 全片擦除（按 y 确认）
+     reset
+     q
+
+【五、擦除后】
+ 1. 全擦会清空程序、恢复 BSL 出厂配置
+ 2. 如果 J-Link 之后连不上：断开电源，等 30 秒再上电重连
+ 3. 重新用 J-Link 烧录你的程序即可
+
+【常见问题】
+ Q: 报错 "Could not connect"？
+ A: 检查接线（SWDIO/SWCLK 别接反）、板子是否上电、驱动是否装好
+
+ Q: erase 时报错 BCR sector 锁着？
+ A: 正常现象，0x41C00000 是出厂锁死的，不用管，其他区域已擦干净
+
+ Q: 全擦后板子彻底没反应？
+ A: 断电 30 秒（让电容放电）再上电，这是山寨 J-Link 的已知现象

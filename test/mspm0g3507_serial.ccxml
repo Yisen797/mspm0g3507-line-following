@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configurations XML_version="1.2" id="configurations_0">
+    <configuration XML_version="1.2" id="Serial Connection_0">
+        <instance XML_version="1.2" desc="Serial Connection_0" href="connections/SerialConnection.xml" id="Serial Connection_0" xml="SerialConnection.xml" xmlpath="connections"/>
+        <connection XML_version="1.2" id="Serial Connection_0">
+            <instance XML_version="1.2" href="drivers/Serial_cortexM.xml" id="drivers" xml="Serial_cortexM.xml" xmlpath="drivers"/>
+            <platform XML_version="1.2" id="platform_0">
+                <instance XML_version="1.2" desc="MSPM0G3507_0" href="devices/mspm0g3507.xml" id="MSPM0G3507_0" xml="mspm0g3507.xml" xmlpath="devices"/>
+            </platform>
+        </connection>
+    </configuration>
+</configurations>

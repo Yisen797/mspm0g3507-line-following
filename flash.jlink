@@ -1,0 +1,11 @@
+// J-Link 烧录脚本
+// 用法: JLinkExe -device MSPM0G3507 -if SWD -speed 4000 -autoconnect 1 -CommanderScript flash.jlink
+device MSPM0G3507
+si SWD
+speed 4000
+r
+h
+loadbin build/tracker_mspm0.bin 0x00000000
+r
+g
+q
